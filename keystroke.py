@@ -4,10 +4,12 @@ import sys, termios, tty, os, time, re
 import unicornhat as hat
 
 hat.set_layout(hat.AUTO)
-hat.rotation(0)
+hat.rotation(90)
 hat.brightness(0.25)
 width,height=hat.get_shape()
- 
+
+print(width)
+print(height)
 button_delay = 0.2
 
 f = open('8x8ascii', 'r+')
@@ -25,9 +27,13 @@ def getch():
     return ch
 
 def show_key(grid):
+    asciipic = []
+    for octet in grid.split(","):
+        asciipic.append(octet)
+
     for h in range(height):
         for w in range(width):
-            io = grid[h][w]
+            io = asciipic[h][w]
             if io == '0':
                 hat.set_pixel(w, h, 0, 0, 0)
             else:
