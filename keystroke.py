@@ -34,10 +34,10 @@ def show_key(grid):
     for h in range(height):
         for w in range(width):
             io = asciipic[h][w]
-            if io == '0':
-                hat.set_pixel(w, h, 0, 0, 0)
-            else:
+            if io == '1':
                 hat.set_pixel(w, h, 255, 0, 0)
+            else:
+                hat.set_pixel(w, h, 0, 0, 0)
     hat.show()
 
 while True:
