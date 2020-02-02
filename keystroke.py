@@ -30,7 +30,7 @@ def getch():    # ref: http://code.activestate.com/recipes/134892/
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
-def show_key(grid):
+def show_key(grid,rgb):
     asciipic = []                               # list to hold the io grid
     for octet in grid.split(","):               # split the segments into lines
         asciipic.append(octet)                  # append each line to the list
@@ -39,7 +39,7 @@ def show_key(grid):
         for x in range(col):                    # iterate through each column
             io = asciipic[y][x]                 # get the io value from our grid
             if io == '1':                       # if the value is '1' light the corresponding pixel
-                hat.set_pixel(x, y, *red)       # X, Y, R, G, B
+                hat.set_pixel(x, y, *rgb)       # X, Y, R, G, B
             else:                               # if it's anything other than '1' turn the corresponding pixel off
                 hat.set_pixel(x, y, *off)       # X, Y, R, G, B
     hat.show()                                  # once the grid has been processed, light the hat
@@ -56,4 +56,13 @@ while True:
             continue
         else:
             grid = (re.search(r"\[(\S+)\]", value)).group(1) # grab the bit between the [ ]
-            show_key(grid)
+            
+            if ord(char) in range(48,58):       # digits in blue
+                rgb = blue
+            elif ord(char) in range(65,91):     # lowercase letters in green
+                rgb = green
+            elif ord(char) in range (97,123):   # uppercase letters in green
+                rgb = green
+            else:
+                rgb = red                       # everything else in red
+            show_key(grid,rgb)                  # show me what you've got!!
