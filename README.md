@@ -1,5 +1,6 @@
 # pi2020
-Code from Class
+
+These files are parsed from a matrix generator (link below).  They can be imported directly into the ascii_pic script in pimoroni's examples for the unicorn hat.
 
 1. 8x8upper is a list of uppercase characters
 2. 8x8digits is a list of digits
@@ -17,4 +18,5 @@ Outputs the 8x8 binary grid to the console for testing shapes
 
 # LINKS
 
-https://xantorohara.github.io/led-matrix-editor/
+1. https://xantorohara.github.io/led-matrix-editor/
+2. https://github.com/pimoroni/unicorn-hat/blob/master/examples/ascii_pic.py
