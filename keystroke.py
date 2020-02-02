@@ -7,7 +7,7 @@ import unicornhat as hat
 hat.set_layout(hat.AUTO)
 hat.rotation(90)            # rotate based on the orientation of the hat 90-180-270
 hat.brightness(0.25)        # setting this too high can result in discomfort
-col,row = hat.getshape()    # set the grid size
+col,row = hat.get_shape()   # set the grid size
 
 button_delay = 0.2          # allows hat the time the LEDs need to light
 
