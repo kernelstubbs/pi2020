@@ -11,6 +11,11 @@ col,row = hat.get_shape()   # set the grid size
 
 button_delay = 0.2          # allows hat the time the LEDs need to light
 
+red     = [255,0,0]         # define some colours
+green   = [0,255,0]
+blue    = [0,0,255]
+off     = [0,0,0]
+
 f = open('8x8ascii', 'r+')  # opens 8x8ascii and breaks it into a numbered list
 ascii = [line for line in f.readlines()]
 f.close()
@@ -34,9 +39,9 @@ def show_key(grid):
         for x in range(col):                    # iterate through each column
             io = asciipic[y][x]                 # get the io value from our grid
             if io == '1':                       # if the value is '1' light the corresponding pixel
-                hat.set_pixel(x, y, 255, 0, 0)  # X, Y, R, G, B
+                hat.set_pixel(x, y, *red)       # X, Y, R, G, B
             else:                               # if it's anything other than '1' turn the corresponding pixel off
-                hat.set_pixel(x, y, 0, 0, 0)    # X, Y, R, G, B
+                hat.set_pixel(x, y, *off)       # X, Y, R, G, B
     hat.show()                                  # once the grid has been processed, light the hat
 
 while True:
