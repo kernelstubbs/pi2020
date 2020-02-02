@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 
-import sys, termios, tty, os, time, re
- 
-button_delay = 0.2
+import sys, termios, tty    # getch take single character input
+import re                   # regex parser
 
 f = open('8x8ascii', 'r+')
 ascii = [line for line in f.readlines()]
 f.close()
 
-def getch():
+def getch():    # ref: http://code.activestate.com/recipes/134892/
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:
@@ -19,14 +18,14 @@ def getch():
     return ch
 
 def show_grid(grid):
-    grid = grid.split(",")
+    grid = grid.replace("0", " ")   # more better visualization
+    grid = grid.split(",")          # split the line into octets to form a grid
     for line in grid:
         print(line)
-    print("\n")
 
 while True:
     char = getch()
-    if ord(char) == 27: # ESC
+    if ord(char) == 27: # ESC or Arrow
         quit()
     elif ord(char) > len(ascii):
         continue
