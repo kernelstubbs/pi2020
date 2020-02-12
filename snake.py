@@ -6,6 +6,7 @@ hat.brightness(0.25)
 
 import sys, termios, tty 
 import random
+import time
 
 red     = [255,0,0]         # define some colours
 green   = [0,255,0]
@@ -42,15 +43,12 @@ class Snake:
         elif axis == "right":
             pos = [x-1,y]
         else:
-            print("Invalid")
-            return
+            end(*red)
         if pos in self.pos:
             if pos == self.pos[1]:
-                print("invalid")
-                return
+                end(*red)
             else:
-                print("Game Over")
-                exit() # game over screen or skull
+                end(*red)
         if pos[0]-1 in range(xRange) and pos[1]-1 in range(yRange):
             self.pos.insert(0, pos)
             if self.pos[0] == food:
@@ -58,8 +56,17 @@ class Snake:
             else:
                 self.pos.pop()
         else:
-            print("invlid")
-            return
+            end(*red)
+
+def end(*rgb):
+    for i in range(3):
+        hat.set_all(*rgb)
+        hat.show()
+        time.sleep(0.5)
+        hat.clear()
+        hat.show()
+        time.sleep(0.5)
+    exit()
 
 def getch():    # ref: http://code.activestate.com/recipes/134892/
     fd = sys.stdin.fileno()
@@ -87,6 +94,8 @@ def getAxis():
 
 def getFood():
     global food
+    if len(snake.pos) >= (xRange * yRange):
+        end(*green)
     while food in snake.pos:
         x = random.randint(1,xRange)
         y = random.randint(1,yRange)
@@ -98,8 +107,8 @@ getFood()
 snake.show()
 
 
+print("Use arrow keys or Esc(x3) to exit(LOL)")
 while True:
-    print("Use arrow keys or Escx3 to exit(LOL)")
     dir = getAxis()
     snake.move(dir)
     #snake.show()
