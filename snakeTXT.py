@@ -1,16 +1,7 @@
-import unicornhat as hat
-xRange, yRange = hat.get_shape()
-#xRange, yRange = 8,8
-hat.set_layout(hat.AUTO)           # rotate based on the orientation of the hat 90-180-270
-hat.brightness(0.25) 
+xRange, yRange = 16,16
 
 import sys, termios, tty 
 import random
-
-red     = [255,0,0]         # define some colours
-green   = [0,255,0]
-blue    = [0,0,255]
-off     = [0,0,0]
 
 class Snake:
     def __init__(self, x, y):
@@ -21,14 +12,14 @@ class Snake:
                 coord = [x+1,y+1]
                 if coord in self.pos:
                     if coord ==  self.pos[0]:
-                        hat.set_pixel(x, y, *blue)
+                        print("X", end='')
                     else:
-                        hat.set_pixel(x, y, *red)
+                        print("O", end='')
                 elif coord == food:
-                    hat.set_pixel(x, y, *green)
+                    print("*", end='')
                 else:
-                    hat.set_pixel(x, y, *off)
-            hat.show()
+                    print("_", end='')
+            print('')
     def move(self, axis):
         x = int(self.pos[0][0])
         y = int(self.pos[0][1])
@@ -38,9 +29,9 @@ class Snake:
         elif axis == "down":
             pos = [x,y-1]
         elif axis == "left":
-            pos = [x+1,y]
-        elif axis == "right":
             pos = [x-1,y]
+        elif axis == "right":
+            pos = [x+1,y]
         else:
             print("Invalid")
             return
@@ -99,8 +90,7 @@ snake.show()
 
 
 while True:
-    print("Use arrow keys or Escx3 to exit(LOL)")
+    snake.show()
+    print("\nUse arrow keys.  ESC x3 to exit(LOL)\n")
     dir = getAxis()
     snake.move(dir)
-    #snake.show()
-    snake.show()
