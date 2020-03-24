@@ -57,6 +57,8 @@ class Snake:
                 self.pos.pop()
         else:
             end(*red)
+    def __iter__(self):
+        return self.pos.__iter__()
 
 def end(*rgb):
     for i in range(3):
@@ -106,10 +108,8 @@ food = [1,1]
 getFood()
 snake.show()
 
-
 print("Use arrow keys or Esc(x3) to exit(LOL)")
 while True:
     dir = getAxis()
     snake.move(dir)
-    #snake.show()
     snake.show()

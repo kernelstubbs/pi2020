@@ -1,7 +1,8 @@
-xRange, yRange = 16,16
+xRange, yRange = 6,6
 
 import sys, termios, tty 
 import random
+import os
 
 class Snake:
     def __init__(self, x, y):
@@ -37,7 +38,6 @@ class Snake:
             return
         if pos in self.pos:
             if pos == self.pos[1]:
-                print("invalid")
                 return
             else:
                 print("Game Over")
@@ -49,7 +49,6 @@ class Snake:
             else:
                 self.pos.pop()
         else:
-            print("invlid")
             return
 
 def getch():    # ref: http://code.activestate.com/recipes/134892/
@@ -78,6 +77,9 @@ def getAxis():
 
 def getFood():
     global food
+    if len(snake.pos) >= (xRange * yRange):
+        print("A WINNER IS YOU!!!!")
+        exit()
     while food in snake.pos:
         x = random.randint(1,xRange)
         y = random.randint(1,yRange)
@@ -90,7 +92,8 @@ snake.show()
 
 
 while True:
-    snake.show()
+    os.system('clear')
     print("\nUse arrow keys.  ESC x3 to exit(LOL)\n")
+    snake.show()
     dir = getAxis()
     snake.move(dir)
