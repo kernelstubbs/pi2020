@@ -1,5 +1,5 @@
 import unicornhat as hat
-import time
+from time import sleep
 
 hat.set_layout(hat.AUTO)
 hat.rotation(90)
