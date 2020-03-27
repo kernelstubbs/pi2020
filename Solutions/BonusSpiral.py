@@ -11,8 +11,6 @@ red     = (255, 0, 0)
 def display(duration):
         hat.show()
         sleep(duration)
-width = 8
-height = 8
 
 xLower = 0
 xUpper = width - 1
