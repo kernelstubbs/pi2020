@@ -14,7 +14,7 @@ off     = (0, 0, 0)
 
 def display(duration): # Instead of repesting these three lines throughout, we can call them as display()
         hat.show()
-        time.sleep(duration)
+        sleep(duration)
         hat.clear()
 
 ##
@@ -22,32 +22,32 @@ def display(duration): # Instead of repesting these three lines throughout, we c
 ### Make an oscillating dot, like Knight Rider or a Cylon
 ##
 
-y = height / 2 # place dot in the middle-ish
+y = int(height / 2) # place dot in the middle-ish
 for n in range(5):
     for i in range(width):
         x = i 
         hat.set_pixel(x, y, *red)
-        display(0.2)
+        display(0.1)
     for i in range(width):
         x = width - 1 - i
         hat.set_pixel(x, y, *red)
-        display(0.2)
+        display(0.1)
 # Why 'width - 1 - i' - Because width is equal to "8" but the pixel value can only be 0 to 7
 # we offset to align with Pythonic ranges. 0-1-2-3 vs 1-2-3-4
 
 ## Bonus: Don't let the dot linger on the first or last position
 ## Hint: range(n,n)
 
-y = height / 2 # place dot in the middle-ish
+y = int(height / 2) # place dot in the middle-ish
 for n in range(5):
     for i in range(width):
         x = i 
-        hat.set_pixel(x, y, *red)
-        display(0.2)
+        hat.set_pixel(x, y, *blue)
+        display(0.1)
     for i in range(1,width - 1):
         x = width - 2 - i
-        hat.set_pixel(x, y, *red)
-        display(0.2)
+        hat.set_pixel(x, y, *blue)
+        display(0.1)
 
 ##
 ### Challenge #2
@@ -58,28 +58,29 @@ for n in range(5):
     for x in range(width):
         for y in range(height):
             hat.set_pixel(x, y, *fucshia)
-            display(0.2)
+        display(0.2)
     for i in range(1, width - 1):
         for y in range(height):
             x = width - 1 - i
             hat.set_pixel(x, y, *fucshia)
-            display(0.2)
+        display(0.2)
 
 ##
 ### Challenge #3
 ### Make a fire truck light
 ##
 
-for n in range(5):
+for n in range(10):
     for x in range(width):
         for y in range(height):
             hat.set_pixel(x, y, *red)
-            hat.show()
-            time.sleep(0.1)
+        hat.show()
+        sleep(0.05)
+    for x in range(width):
         for y in range(height):
             hat.set_pixel(x, y, *off)
-            hat.show()
-            time.sleep(0.1)
+        hat.show()
+        sleep(0.05)
 
 ##
 ### Challenge #4

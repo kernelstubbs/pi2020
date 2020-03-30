@@ -18,7 +18,7 @@ yLower = 0
 yUpper = height - 1
 
 
-while True:
+while xUpper > xLower:
     for y in range(yLower,yUpper + 1):
         hat.set_pixel(xLower, y, *red)
         display(0.2)
@@ -28,12 +28,10 @@ while True:
         display(0.2)
     yUpper -= 1
     for y in range(yUpper, yLower - 1, -1):
-        hat.set_pixel(xUpper, y)
+        hat.set_pixel(xUpper, y, *red)
         display(0.2)
     xUpper -= 1
     for x in range(xUpper, xLower - 1, -1):
-        hat.set_pixel(x, yLower)
-        #isplay(0.2)
+        hat.set_pixel(x, yLower, *red)
+        display(0.2)
     yLower += 1
-    if xUpper <= xLower:
-        break

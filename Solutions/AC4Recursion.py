@@ -14,7 +14,7 @@ off     = (0, 0, 0)
 
 def display(duration): # Instead of repesting these three lines throughout, we can call them as display()
         hat.show()
-        time.sleep(duration)
+        sleep(duration)
         hat.clear()
 
 
@@ -26,39 +26,43 @@ def display(duration): # Instead of repesting these three lines throughout, we c
 ## Method ONE - decreasing squares - 204 set_pixel calls / 1496 for hatHD
 
 for n in range(width):
-    i = width - 1 - n
-    colour = ((1 / width * n), 1, 1)
+    i = width - n
+    colour = ((1 / width * i), 1, 1)
+    print(colour)
     for x in range(i):
         for y in range(i):
-            set_pixel_hsv(x, y, *colour)
-
+            hat.set_pixel_hsv(x, y, *colour)
+display(5)
 ## Method TWO - focused recursion - 72 set_pixel calls / 272 for hatHD
 
 for n in range(width):
-    p1 = width - 1 - n
-    colour = ((1 / width * n), 1, 1)
+    p1 = width - n
+    colour = ((1 / width * p1), 1, 1)
     for p2 in range(p1 + 1):
-            set_pixel_hsv(p1, p2, *colour)
-            set_pixel_hsv(p2, p1, *colour)
+            hat.set_pixel_hsv(p1, p2, *colour)
+            hat.set_pixel_hsv(p2, p1, *colour)
+display(5)
 
 ## Method THREE - focused and efficient recursion - 64 set_pixel calls / 256 for hatHD
 
 for n in range(width):
-    p1 = width - 1 - n
-    colour = ((1 / width * n), 1, 1)
-    for p2 in range(n):
-            set_pixel_hsv(p1, p2, *colour)
+    p1 = width - n
+    colour = ((1 / width * p1), 1, 1)
+    for p2 in range(p1 + 1):
+            hat.set_pixel_hsv(p1, p2, *colour)
             if p1 != p2:
-                set_pixel_hsv(p2, p1, *colour)
+                hat.set_pixel_hsv(p2, p1, *colour)
+display(5)
 
 
-
+if False:
+    '''
 width = 8
 count = 0
 for i in range(width):
     n = width - i
-    for x in range(n):
-        for y in range(n):
+    for x in range(n+1):
+        for y in range(n+1):
             print(x, y, end=' ')
             count += 1
         print()
@@ -89,3 +93,4 @@ for n in range(width):
         print()
     print('---')
 print(count)
+'''
