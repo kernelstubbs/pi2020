@@ -6,7 +6,7 @@ hat.rotation(90)
 hat.brightness(0.3)        
 width,height = hat.get_shape() # Universal for hat and hatHD 8x8 or 16x16 grids
 
-def display(duration): # Instead of repesting these three lines throughout, we can call them as display()
+def display(duration): # Instead of repeating these three lines throughout, we can call them as display()
         hat.show()
         sleep(duration)
         hat.clear()

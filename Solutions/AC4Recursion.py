@@ -12,7 +12,7 @@ blue    = (0, 0, 255)
 fucshia = (255, 0, 170)
 off     = (0, 0, 0)
 
-def display(duration): # Instead of repesting these three lines throughout, we can call them as display()
+def display(duration): # Instead of repeating these three lines throughout, we can call them as display()
         hat.show()
         sleep(duration)
         hat.clear()
