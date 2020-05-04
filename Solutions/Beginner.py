@@ -73,7 +73,7 @@ hat.clear()
 ### Light one height using a FOR loop
 ##
 
-x = 0 # which widthumn to light 0-7
+x = 0 # which column to light 0-7
 for y in range(height):
     hat.set_pixel(x, y, *red)
 
