@@ -3,7 +3,7 @@ from time import sleep
 
 hat.set_layout(hat.AUTO)
 hat.rotation(90)
-hat.brightness(0.25)        
+hat.brightness(0.4)        
 width,height = hat.get_shape() # Universal for hat and hatHD 8x8 or 16x16 grids
 
 red     = (255, 0, 0)
@@ -28,11 +28,11 @@ def display(duration): # Instead of repesting these three lines throughout, we c
 for n in range(width):
     i = width - n
     colour = ((1 / width * i), 1, 1)
-    print(colour)
     for x in range(i):
         for y in range(i):
             hat.set_pixel_hsv(x, y, *colour)
 display(5)
+
 ## Method TWO - focused recursion - 72 set_pixel calls / 272 for hatHD
 
 for n in range(width):
