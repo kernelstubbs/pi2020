@@ -23,7 +23,7 @@ def display(duration): # Instead of repeating these three lines throughout, we c
 ##
 
 y = int(height / 2) # place dot in the middle-ish
-for n in range(5):
+for n in range(15):
     for i in range(width):
         x = i 
         hat.set_pixel(x, y, *red)
@@ -40,7 +40,7 @@ for n in range(5):
 ### Make an oscillating column in a non-primary colour
 ##
 
-for n in range(5):
+for n in range(15):
     for x in range(width):
         for y in range(height):
             hat.set_pixel(x, y, *fucshia)
@@ -56,7 +56,7 @@ for n in range(5):
 ### Make a fire truck light
 ##
 
-for n in range(10):
+for n in range(15):
     for x in range(width):
         for y in range(height):
             hat.set_pixel(x, y, *red)
@@ -73,7 +73,7 @@ for n in range(10):
 ### Make a police light
 ##
 
-for n in range(5):
+for n in range(15):
     for x in range(width):
         for y in range(height):
             if x < width / 2:

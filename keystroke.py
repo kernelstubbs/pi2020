@@ -65,4 +65,4 @@ while True:
                 rgb = green
             else:
                 rgb = red                       # everything else in red
-            show_key(grid,rgb)                  # show me what you've got!!
+            show_key(grid,rgb)                  # show me what you've got!

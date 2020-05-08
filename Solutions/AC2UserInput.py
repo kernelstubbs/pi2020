@@ -3,8 +3,7 @@ from time import sleep
 
 hat.set_layout(hat.AUTO)
 hat.rotation(90)
-hat.brightness(0.3)        
-width,height = hat.get_shape() # Universal for hat and hatHD 8x8 or 16x16 grids
+hat.brightness(0.3)
 
 def display(duration): # Instead of repeating these three lines throughout, we can call them as display()
         hat.show()

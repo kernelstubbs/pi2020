@@ -16,6 +16,10 @@ Waits for user input and shows the corresponding keystrokes on the unicorn hat
 
 Outputs the 8x8 binary grid to the console for testing shapes
 
+# Solutions
+
+Collection of answer code for Student challenges.
+
 # LINKS
 
 1. https://xantorohara.github.io/led-matrix-editor/
