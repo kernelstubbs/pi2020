@@ -23,6 +23,21 @@ def display(duration): # Instead of repeating these three lines throughout, we c
 ### Use recursion to create a reducing square rainbow
 ##
 
+def recurse(step):
+    p1 = width - step
+    colour = ((1 / width * p1), 1, 1)
+    for p2 in range(p1 + 1):
+            hat.set_pixel_hsv(p1, p2, *colour)
+            if p1 != p2:
+                hat.set_pixel_hsv(p2, p1, *colour)
+    hat.show()
+    sleep(2)
+    if step < width:
+        recurse(step + 1)
+recurse(1)
+
+
+
 ## Method ONE - decreasing squares - 204 set_pixel calls / 1496 for hatHD
 
 for n in range(width):
